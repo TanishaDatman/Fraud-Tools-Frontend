@@ -1,0 +1,22 @@
+/* src/custom-datepicker.css or src/index.css */
+
+/* 1. Input focus ring and border */
+input.react-datepicker__input-container input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px black; /* black ring */
+    border-color: black;
+  }
+  
+  /* 2. Datepicker popup overrides (hover and selected date) */
+  /* Using your custom class "custom-datepicker" */
+  .custom-datepicker .react-datepicker__day--selected,
+  .custom-datepicker .react-datepicker__day--keyboard-selected {
+    background-color: black !important;
+    color: white !important; /* white text for contrast */
+  }
+  
+  .custom-datepicker .react-datepicker__day:hover {
+    background-color: black !important;
+    color: white !important;
+  }
+  

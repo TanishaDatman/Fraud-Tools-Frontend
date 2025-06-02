@@ -3,6 +3,8 @@ import DatePicker from "react-datepicker";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import "react-datepicker/dist/react-datepicker.css";
+import "../../custom-datepicker.css";
+
 
 const providers = ["Checkout.com", "Adyen", "CS-Ch"];
 const paymentMethods = ["Saved Card", "GPay", "APay"];
@@ -24,7 +26,7 @@ const FilterComponent = () => {
 
       <div className="flex flex-col gap-4 md:gap-6 md:flex-row md:items-center md:flex-wrap">
         {/* Date Range */}
-        <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full md:w-auto">
+        {/* <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full md:w-auto">
           <label className="font-medium min-w-[90px]">Date Range:</label>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
             <DatePicker
@@ -48,7 +50,41 @@ const FilterComponent = () => {
               dateFormat="dd/MM/yyyy"
             />
           </div>
-        </div>
+        </div> */}
+        <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full md:w-auto">
+  <label className="font-medium min-w-[90px]">Date Range:</label>
+  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto relative">
+    <div className="w-full sm:w-44">
+      <DatePicker
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+        selectsStart
+        startDate={startDate}
+        endDate={endDate}
+        className="border rounded-md p-2 text-sm w-full"
+        dateFormat="dd/MM/yyyy"
+        popperClassName="!z-50 custom-datepicker"
+      />
+    </div>
+
+    <span className="text-sm">to</span>
+
+    <div className="w-full sm:w-44">
+      <DatePicker
+        selected={endDate}
+        onChange={(date) => setEndDate(date)}
+        selectsEnd
+        startDate={startDate}
+        endDate={endDate}
+        minDate={startDate ?? undefined}
+        className="border rounded-md p-2 text-sm w-full"
+        dateFormat="dd/MM/yyyy"
+        popperClassName="!z-50 custom-datepicker"
+      />
+    </div>
+  </div>
+</div>
+
 
 
 

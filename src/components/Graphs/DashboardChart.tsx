@@ -111,10 +111,10 @@ const DashboardChart = () => {
     <>
     <FilterComponent/>
     <div className="p-6 bg-white rounded-lg shadow-md w-full">
-      <h2 className="text-2xl font-semibold mb-2">Transaction journeys</h2>
+      <h2 className="text-2xl font-semibold mb-4">Transaction journeys</h2>
 
       {/* Tabs */}
-      <div className="flex space-x-6 border-b border-gray-300 mb-2">
+      <div className="flex space-x-6 border-b border-gray-300 mb-3">
         <button
           onClick={() => setActiveTab('Amount')}
           className={`pb-2 ${activeTab === 'Amount' ? 'border-b-2 border-black font-medium' : 'text-gray-400'}`}
@@ -130,7 +130,7 @@ const DashboardChart = () => {
       </div>
 
       {/* Stage Headers */}
-      <div className="flex justify-between text-center text-sm text-gray-600 font-medium mb-3 px-2">
+      <div className="flex justify-between text-center mt-7 text-sm text-gray-600 font-medium mb-3 px-2">
         <span>Incoming transactions</span>
         <span>→ Pre-auth</span>
         <span>→ Authentication</span>
