@@ -126,17 +126,12 @@
 
 
 
-
-
-
-
-
-
-
-
 import React, { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import FilterComponent from '../Filters/Filter';
+import { Navigation } from '../Navigation';
+import Estimates from '../Analysis/Estimates';
+import Table from '../Analysis/Table';
 
 const DashboardChart = () => {
   const [activeTab, setActiveTab] = useState('Transactions');
@@ -304,8 +299,13 @@ const DashboardChart = () => {
     ]
   };
 
+      const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+
   return (
     <>
+            <Navigation isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}>
+
       <FilterComponent/>
       <div className="p-6 bg-white rounded-lg shadow-md w-full">
         <h2 className="text-2xl font-semibold mb-4">Transaction journeys</h2>
@@ -329,6 +329,10 @@ const DashboardChart = () => {
         {/* Chart */}
         <ReactECharts option={option} style={{ height: '500px', width: '100%' }} />
       </div>
+      <Estimates/>
+      <Table/>
+      </Navigation>
+     
     </>
   );
 };
