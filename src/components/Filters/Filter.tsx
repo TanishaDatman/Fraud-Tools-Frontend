@@ -54,6 +54,8 @@ const FilterComponent = () => {
         <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 w-full md:w-auto">
   <label className="font-medium min-w-[90px]">Date Range:</label>
   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto relative">
+
+    
     <div className="w-full sm:w-44">
       <DatePicker
         selected={startDate}
