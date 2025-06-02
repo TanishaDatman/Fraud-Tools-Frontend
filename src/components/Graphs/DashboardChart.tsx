@@ -235,68 +235,149 @@ const DashboardChart = () => {
         ]
       }
     ],
+    // graphic: [
+    //   {
+    //     type: 'text',
+    //     left: '5%',
+    //     top: '3%',
+    //     style: {
+    //       text: 'Incoming transactions',
+    //       font: ' 14px sans-serif',
+    //       fill: '#8b8791'
+    //     }
+    //   },
+    //   {
+    //     type: 'text',
+    //     left: '20%',
+    //     top: '3%',
+    //     style: {
+    //       text: 'Pre-auth',
+    //        font: ' 14px sans-serif',
+    //       fill: '#8b8791'
+    //     }
+    //   },
+    //   {
+    //     type: 'text',
+    //     left: '35%',
+    //     top: '3%',
+    //     style: {
+    //       text: 'Authentication',
+    //       font: ' 14px sans-serif',
+    //       fill: '#8b8791'
+    //     }
+    //   },
+    //   {
+    //     type: 'text',
+    //     left: '50%',
+    //     top: '3%',
+    //     style: {
+    //       text: 'Authorisation',
+    //        font: ' 14px sans-serif',
+    //       fill: '#8b8791'
+    //     }
+    //   },
+    //   {
+    //     type: 'text',
+    //     left: '65%',
+    //     top: '3%',
+    //     style: {
+    //       text: 'Post-auth',
+    //      font: ' 14px sans-serif',
+    //       fill: '#8b8791'
+    //     }
+    //   },
+    //   {
+    //     type: 'text',
+    //     left: '80%',
+    //     top: '3%',
+    //     style: {
+    //       text: 'Current status',
+    //       font: ' 14px sans-serif',
+    //       fill: '#8b8791'
+    //     }
+    //   }
+    // ]
     graphic: [
-      {
-        type: 'text',
-        left: '5%',
-        top: '3%',
-        style: {
-          text: 'Incoming transactions',
-          font: ' 14px sans-serif',
-          fill: '#8b8791'
-        }
-      },
-      {
-        type: 'text',
-        left: '20%',
-        top: '3%',
-        style: {
-          text: 'Pre-auth',
-           font: ' 14px sans-serif',
-          fill: '#8b8791'
-        }
-      },
-      {
-        type: 'text',
-        left: '35%',
-        top: '3%',
-        style: {
-          text: 'Authentication',
-          font: ' 14px sans-serif',
-          fill: '#8b8791'
-        }
-      },
-      {
-        type: 'text',
-        left: '50%',
-        top: '3%',
-        style: {
-          text: 'Authorisation',
-           font: ' 14px sans-serif',
-          fill: '#8b8791'
-        }
-      },
-      {
-        type: 'text',
-        left: '65%',
-        top: '3%',
-        style: {
-          text: 'Post-auth',
-         font: ' 14px sans-serif',
-          fill: '#8b8791'
-        }
-      },
-      {
-        type: 'text',
-        left: '80%',
-        top: '3%',
-        style: {
-          text: 'Current status',
-          font: ' 14px sans-serif',
-          fill: '#8b8791'
-        }
-      }
-    ]
+        {
+          type: 'text',
+          left: '5%',
+          top: '3%',
+          style: {
+            text: 'Incoming transactions  →',
+            font: '14px sans-serif',
+            fill: '#8b8791'
+          }
+        },
+        {
+          type: 'text',
+          left: '20%',
+          top: '3%',
+          style: {
+            text: 'Pre-auth  →',
+            font: '14px sans-serif',
+            fill: '#8b8791'
+          }
+        },
+        {
+          type: 'text',
+          left: '35%',
+          top: '3%',
+          style: {
+            text: 'Authentication   →',
+            font: '14px sans-serif',
+            fill: '#8b8791'
+          }
+        },
+        {
+          type: 'text',
+          left: '50%',
+          top: '3%',
+          style: {
+            text: 'Authorisation   →',
+            font: '14px sans-serif',
+            fill: '#8b8791'
+          }
+        },
+        {
+          type: 'text',
+          left: '65%',
+          top: '3%',
+          style: {
+            text: 'Post-auth   →',
+            font: '14px sans-serif',
+            fill: '#8b8791'
+          }
+        },
+        {
+          type: 'text',
+          left: '80%',
+          top: '3%',
+          style: {
+            text: 'Current status',
+            font: '14px sans-serif',
+            fill: '#8b8791'
+          }
+        },
+      
+        // Dotted grey vertical Y-axis lines
+        ...['5%', '20%', '35%', '50%', '65%', '80%'].map(left => ({
+          type: 'line',
+          left,
+          top: 50, 
+          shape: {
+            x1: 0,
+            y1: 0,
+            x2: 0,
+            y2: 400 
+          },
+          style: {
+            stroke: '#D1D5DB', 
+            lineWidth: 1,
+            lineDash: [4, 4]
+          }
+        }))
+      ]
+      
   };
 
       const [isSidebarOpen, setIsSidebarOpen] = useState(false);

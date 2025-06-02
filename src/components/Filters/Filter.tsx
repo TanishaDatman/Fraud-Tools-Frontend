@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import "react-datepicker/dist/react-datepicker.css";
 import "../../custom-datepicker.css";
+
+import Datetime from 'react-datetime';
+import "react-datetime/css/react-datetime.css";
+import moment from 'moment';
 
 
 const providers = ["Checkout.com", "Adyen", "CS-Ch"];
@@ -16,7 +20,33 @@ const FilterComponent = () => {
   const [selectedProvider, setSelectedProvider] = useState("Adyen");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("NewCard");
   const [providerOpen, setProviderOpen] = useState(false);
-  const [paymentOpen, setPaymentOpen] = useState(false);
+const [paymentOpen, setPaymentOpen] = useState(false);
+
+const providerRef = useRef<HTMLDivElement>(null);
+const paymentRef = useRef<HTMLDivElement>(null);
+
+// Close dropdown when clicking outside
+useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      providerRef.current &&
+      !providerRef.current.contains(event.target as Node)
+    ) {
+      setProviderOpen(false);
+    }
+    if (
+      paymentRef.current &&
+      !paymentRef.current.contains(event.target as Node)
+    ) {
+      setPaymentOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
   
 
@@ -56,7 +86,7 @@ const FilterComponent = () => {
   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto relative">
 
     
-    <div className="w-full sm:w-44">
+    {/* <div className="w-full sm:w-44">
       <DatePicker
         selected={startDate}
         onChange={(date) => setStartDate(date)}
@@ -67,11 +97,35 @@ const FilterComponent = () => {
         dateFormat="dd/MM/yyyy"
         popperClassName="!z-50 custom-datepicker"
       />
-    </div>
+    </div> */}
+
+<div className="w-full sm:w-64">
+  <DatePicker
+    selected={startDate}
+    onChange={(date) => setStartDate(date)}
+    showTimeSelect
+    timeFormat="HH:mm"
+    timeIntervals={15}
+    dateFormat="dd/MM/yyyy h:mm aa"
+    className="border rounded-md p-2 text-sm w-full"
+    popperClassName="!z-50 custom-datepicker"
+  />
+</div>
+
+{/* <div className="w-full sm:w-64">
+  <Datetime
+    value={startDate}
+    onChange={(date) => setStartDate(moment(date).toDate())}
+    dateFormat="DD/MM/YYYY"
+    timeFormat="HH:mm"
+    inputProps={{ className: "border rounded-md p-2 text-sm w-full" }}
+  />
+</div> */}
+
 
     <span className="text-sm">to</span>
 
-    <div className="w-full sm:w-44">
+    {/* <div className="w-full sm:w-44">
       <DatePicker
         selected={endDate}
         onChange={(date) => setEndDate(date)}
@@ -83,7 +137,22 @@ const FilterComponent = () => {
         dateFormat="dd/MM/yyyy"
         popperClassName="!z-50 custom-datepicker"
       />
-    </div>
+    </div> */}
+
+<div className="w-full sm:w-64">
+  <DatePicker
+    selected={endDate}
+    onChange={(date) => setEndDate(date)}
+    showTimeSelect
+    startDate={startDate}
+    endDate={endDate}
+    timeFormat="HH:mm"
+    timeIntervals={15}
+    dateFormat="dd/MM/yyyy h:mm aa"
+    className="border rounded-md p-2 text-sm w-full"
+    popperClassName="!z-50 custom-datepicker"
+  />
+</div>
   </div>
 </div>
 
@@ -93,7 +162,9 @@ const FilterComponent = () => {
 
 
         {/* Provider Dropdown */}
-        <div className="flex flex-col md:flex-row md:items-center gap-1 relative w-full md:w-auto">
+        <div className="flex flex-col md:flex-row md:items-center gap-1 relative w-full md:w-auto"
+                 ref={providerRef}
+>
   <label className="font-medium min-w-[90px]">Provider:</label>
   <div className="relative w-full sm:w-44">
     <button
@@ -135,7 +206,9 @@ const FilterComponent = () => {
 
 
         {/* Payment Method Dropdown */}
-        <div className="flex flex-col md:flex-row md:items-center gap-1 relative w-full md:w-auto">
+        <div className="flex flex-col md:flex-row md:items-center gap-1 relative w-full md:w-auto"
+                 ref={paymentRef}
+>
   <label className="font-medium min-w-[130px]">Payment Method:</label>
   <div className="relative w-full sm:w-44">
     <button

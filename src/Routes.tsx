@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { NavigationContainer } from './components/Navigation';
 import Chart2 from './components/Graphs/Chart2';
 import DashboardChart from './components/Graphs/DashboardChart';
 // import { isAuthenticated } from './utils/auth';
