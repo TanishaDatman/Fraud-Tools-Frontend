@@ -1,13 +1,9 @@
-function App() {
+import AppRoutes from "./Routes"
 
-  return (
-    <>
-  
-      <p className="bg-blue-700">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+const App = () => {
+  return <AppRoutes />
 }
 
-export default App
+
+export default App;
